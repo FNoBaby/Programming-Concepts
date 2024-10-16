@@ -152,5 +152,111 @@ public class Worksheet6 {
 //
 //        System.out.println("Lowest value: " + min);
 //        System.out.println("Highest value: " + max);
+//---------------------------------------------------------
+// 6B
+//---------------------------------------------------------
+        //1
+//        for (int i = 1; i <= 10; i++) {
+//            System.out.print(i + " ");
+//        }
+//        System.out.println();
+//
+//        for (int i = 10; i >= 1; i--) {
+//            System.out.print(i + " ");
+//        }
+//---------------------------------------------------------
+        //2
+//        System.out.print("Enter the minimum number: ");
+//        int min = input.nextInt();
+//
+//        System.out.print("Enter the maximum number: ");
+//        int max = input.nextInt();
+//
+//        int sum = 0;
+//
+//        for (int i = min; i <= max; i++) {
+//            sum += i;
+//        }
+//
+//        System.out.println("The sum of numbers between " + min + " and " + max + " is: " + sum);
+//---------------------------------------------------------
+        //3
+//        int total = 0;
+//
+//        for (int i = 0; i < 10; i++) {
+//            System.out.print("Enter a number (-1 to stop): ");
+//            int number = input.nextInt();
+//
+//            if (number == -1) {
+//                break;
+//            }
+//
+//            total += number;
+//        }
+//
+//        System.out.println("The total is: " + total);
+//---------------------------------------------------------
+        //4
+//        int count = 0;
+//
+//        System.out.println("Enter a set of words. Press * to stop.");
+//
+//        while (true) {
+//            String word = input.nextLine();
+//
+//            if (word.equals("*")) {
+//                break;
+//            }
+//
+//            count++;
+//        }
+//
+//        System.out.println("You entered " + count + " words.");
+//---------------------------------------------------------
+        //5
+//        int choice;
+//
+//        do {
+//            System.out.println("Menu");
+//            System.out.println("1.Phone Book");
+//            System.out.println("2.Messages");
+//            System.out.println("3.Games");
+//            System.out.println("4.Quit");
+//            System.out.print("Enter choice: ");
+//            choice = input.nextInt();
+//
+//            switch (choice) {
+//                case 1:
+//                    System.out.println("You chose Phone Book");
+//                    break;
+//                case 2:
+//                    System.out.println("You chose Messages");
+//                    break;
+//                case 3:
+//                    System.out.println("You chose Games");
+//                    break;
+//                case 4:
+//                    System.out.println("Exiting the program.");
+//                    break;
+//                default:
+//                    System.out.println("Invalid choice. Please try again.");
+//            }
+//        } while (choice != 4);
+//---------------------------------------------------------
+        //6
+//        int roomNumber;
+//
+//        while (true) {
+//            System.out.print("Enter Room No: ");
+//            roomNumber = input.nextInt();
+//
+//            if (roomNumber >= 1 && roomNumber <= 200) {
+//                System.out.println("Room number is valid. Goodbye!");
+//                break;
+//            } else {
+//                System.out.println("Room number must be between 1 and 200.");
+//            }
+//        }
+//---------------------------------------------------------
     }
 }
