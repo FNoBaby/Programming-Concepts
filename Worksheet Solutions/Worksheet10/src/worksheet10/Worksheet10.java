@@ -111,5 +111,43 @@ public class Worksheet10 {
         System.out.println("\nNumbers before removing zeros: " + numbers);
         removeZeros(numbers);
         System.out.println("Numbers after removing zeros: " + numbers);
+
+        /*
+            Write a method as below
+        
+            public int[] alternate(int[] arr1, int[] arr2)
+        
+            that will take an element from arr1, then the next from arr2, next from arr1, etc
+        
+            so that
+        
+            int[] arr1 = {1,2,3,4,5,6,7,8,9,10}
+            int[] arr2 = {10,20,30,40,50,60,70,80,90,100}
+        
+            int[] altArray = alternate(arr1, arr2)
+        
+            altArray will have the alternating values from arr1 and arr2
+         */
+        int[] arr1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] arr2 = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+        
+        int[] altArray = alternate(arr1, arr2);
+        
+        for(int num : altArray){
+            System.out.println(num);
+        }
+    }
+
+    public static int[] alternate(int[] arr1, int[] arr2) {
+        int[] arr3 = new int[arr1.length];
+        for (int i = 0; i < arr1.length; i++) {
+            if (i%2 == 0) {
+                arr3[i] = arr2[i];
+            } else {
+                arr3[i] = arr1[i];
+            }
+        }
+
+        return arr3;
     }
 }
