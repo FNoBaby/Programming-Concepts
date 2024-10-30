@@ -6,6 +6,27 @@ import javax.swing.JFrame;
 import java.util.Scanner;
 
 public class ExtraWS2 extends JFrame implements KeyListener {
+    /*
+        Write a program that will operate a lift for the following Building:
+
+        Level Description
+        0 Ground
+        1 Office
+        2 Apartment 1
+        3 Apartment 2
+        4 Penthouse
+        5 Roof
+
+        The Ask the user to enter a floor [0...5], wait for sometime (1 second for each floor moved) 
+        and finally print the floor description.
+        It the user enters the floor we are currently on, nothing happens the user enters an invalid floor, show an error
+
+        If Use methods!
+
+        Extra Task: Implement a feature so the user can press ARROW_UP/ARROW_DOWN to move up/down 1 floor. 
+        Nothing happens when pressing down when on floor zero (or pressing up when on floow 5).
+        Some research needed here to detect arrow presses.
+     */
     private int currentFloor = 0;
     public String[] floorDescriptions = {
         "Ground",
