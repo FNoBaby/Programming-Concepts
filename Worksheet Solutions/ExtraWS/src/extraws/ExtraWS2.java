@@ -24,7 +24,7 @@ public class ExtraWS2 extends JFrame implements KeyListener {
         If Use methods!
 
         Extra Task: Implement a feature so the user can press ARROW_UP/ARROW_DOWN to move up/down 1 floor. 
-        Nothing happens when pressing down when on floor zero (or pressing up when on floow 5).
+        Nothing happens when pressing down when on floor zero (or pressing up when on floor 5).
         Some research needed here to detect arrow presses.
      */
     private int currentFloor = 0;
