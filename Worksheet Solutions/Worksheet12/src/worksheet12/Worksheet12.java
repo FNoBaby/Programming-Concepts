@@ -24,7 +24,7 @@ public class Worksheet12 {
          * clause.
          * 
          * - Give an example of a Checked Exception:
-         * IOException
+         * IOException, SQLException, ClassNotFoundException, FileNotFoundException, ParseException, InterruptedException, etc....
          * 
          * - What can you do to handle a Checked Exception?
          * You can use try-catch block to handle the exception.
@@ -34,7 +34,7 @@ public class Worksheet12 {
          * Unchecked Exceptions are exceptions that are not checked at compile time.
          * 
          * - Give an example of an Unchecked Exception:
-         * NullPointerException
+         * NullPointerException, ArrayIndexOutOfBoundsException, ArithmeticException, StringIndexOutOFBoundsException, etc....
          * 
          * - What can you do to handle an Unchecked Exception?
          * You can use try-catch block to handle the exception.
@@ -45,7 +45,7 @@ public class Worksheet12 {
          * and that the application usually cannot anticipate or recover from.
          * 
          * - Give an example of an Error:
-         * OutOfMemoryError
+         * OutOfMemoryError, StackOverflowError, NoClassDefFoundError, etc....
          * 
          * - What can you do to handle an Error?
          * You can use try-catch block to handle the exception.
