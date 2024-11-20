@@ -22,17 +22,98 @@ public class FileHandling {
         // Java File Handling Classes
         // Java provides various classes for file handling.
         // Some of the commonly used classes are:
-        // 1. File Class
-        // 2. FileInputStream Class
-        // 3. FileOutputStream Class
-        // 4. BufferedInputStream Class
-        // 5. BufferedOutputStream Class
-        // 6. DataInputStream Class
-        // 7. DataOutputStream Class
-        // 8. FileReader Class
-        // 9. FileWriter Class
-        // 10. BufferedReader Class
-        // 11. BufferedWriter Class
+        // 1. File Class: It is used to create objects that provide access to the files
+        // and directories of a local file system.
+
+        // 2. FileInputStream Class: It is used to read data from a file as a stream of
+        // bytes.
+
+        // 3. FileOutputStream Class: It is used to write data to a file as a stream of
+        // bytes.
+
+        // 4. BufferedInputStream Class: It is used to read data from a file as a stream
+        // of bytes with buffering.
+
+        // 5. BufferedOutputStream Class: It is used to write data to a file as a stream
+        // of bytes with buffering.
+
+        // 6. DataInputStream Class: It is used to read primitive data types from an
+        // input stream.
+
+        // 7. DataOutputStream Class: It is used to write primitive data types to an
+        // output stream.
+
+        // 8. FileReader Class: It is used to read data from a file as a stream of
+        // characters.
+
+        // 9. FileWriter Class: It is used to write data to a file as a stream of
+        // characters.
+
+        // 10. BufferedReader Class: It is used to read data from a file as a stream of
+        // characters with buffering.
+
+        // 11. BufferedWriter Class: It is used to write data to a file as a stream of
+        // characters with buffering.
+
+        // 12. RandomAccessFile Class: It is used to read and write data to a file
+        // randomly.
+
+        // 13. Scanner Class: It is used to read data from various input sources like
+        // files, strings, and streams.
+
+        // 14. PrintWriter Class: It is used to write formatted data to a file.
+
+        // Java File Handling Operations
+        // Java File Handling allows you to perform various operations on files and
+        // directories.
+        // Some of the common file handling operations are:
+        // 1. Creating a File: You can create a new file using the createNewFile() method
+        // of the File class.
+
+        // 2. Deleting a File: You can delete a file using the delete() method of the
+        // File class.
+
+        // 3. Renaming a File: You can rename a file using the renameTo() method of the
+        // File class.
+
+        // 4. Checking if a File Exists: You can check if a file exists using the exists()
+        // method of the File class.
+
+        // 5. Getting the Name of a File: You can get the name of a file using the getName()
+        // method of the File class.
+
+        // 6. Getting the Path of a File: You can get the path of a file using the getPath()
+        // method of the File class.
+
+        // 7. Getting the Parent Directory of a File: You can get the parent directory of a
+        // file using the getParentFile() method of the File class.
+
+        // 8. Getting the Size of a File: You can get the size of a file in bytes using the
+        // length() method of the File class.
+
+        // 9. Checking if a File is a Directory: You can check if a file is a directory using
+        // the isDirectory() method of the File class.
+
+        // 10. Checking if a File is a File: You can check if a file is a file using the isFile()
+        // method of the File class.
+
+        // 11. Listing Files and Directories: You can get the list of files and directories in a
+        // directory using the list() method of the File class.
+
+        // 12. Creating a Directory: You can create a new directory using the mkdir() method of
+        // the File class.
+
+        // 13. Getting the List of Files and Directories: You can get the list of files and
+        // directories in a directory using the listFiles() method of the File class.
+
+        // 14. Reading the Contents of a File: You can read the contents of a file using the
+        // FileReader class.
+
+        // 15. Writing to a File: You can write to a file using the FileWriter class.
+
+        // 16. Getting the List of Root Directories: You can get the list of root directories
+        // using the listRoots() method of the File class.
+
 
         // Java File Class
         // The File class is used to create objects that provide access to the files and
@@ -67,6 +148,200 @@ public class FileHandling {
         // 10. mkdir(): This method is used to create a directory.
         // 11. renameTo(File dest): This method is used to rename the file or directory.
         // 12. length(): This method is used to get the size of the file in bytes.
+
+        // Java FileInputStream Class
+        // The FileInputStream class is used to read data from a file as a stream of bytes.
+        // It is used for reading raw bytes of data, such as image data, audio data, etc.
+        // The FileInputStream class is present in the java.io package.
+        // It extends the InputStream class.
+
+        // Java FileInputStream Class Constructors
+        // 1. FileInputStream(String name): Creates a new FileInputStream by opening a
+        // connection to the file specified by the name parameter.
+        // 2. FileInputStream(File file): Creates a new FileInputStream by opening a
+        // connection to the file specified by the file parameter.
+
+        // Java FileInputStream Class Methods
+        // 1. read(): This method is used to read the next byte of data from the input
+        // stream.
+        // 2. close(): This method is used to close the input stream.
+
+        // Java FileOutputStream Class
+        // The FileOutputStream class is used to write data to a file as a stream of bytes.
+        // It is used for writing raw bytes of data, such as image data, audio data, etc.
+        // The FileOutputStream class is present in the java.io package.
+        // It extends the OutputStream class.
+
+        // Java FileOutputStream Class Constructors
+        // 1. FileOutputStream(String name): Creates a new FileOutputStream by opening a
+        // connection to the file specified by the name parameter.
+        // 2. FileOutputStream(File file): Creates a new FileOutputStream by opening a
+        // connection to the file specified by the file parameter.
+
+        // Java FileOutputStream Class Methods
+        // 1. write(int b): This method is used to write the specified byte to the output
+        // stream.
+        // 2. close(): This method is used to close the output stream.
+
+        // Java FileReader Class
+        // The FileReader class is used to read data from a file as a stream of characters.
+        // It is used for reading character files, such as text files.
+        // The FileReader class is present in the java.io package.
+        // It extends the InputStreamReader class.
+
+        // Java FileReader Class Constructors
+        // 1. FileReader(String fileName): Creates a new FileReader by opening a
+        // connection to the file specified by the fileName parameter.
+        // 2. FileReader(File file): Creates a new FileReader by opening a connection to
+        // the file specified by the file parameter.
+
+        // Java FileReader Class Methods
+        // 1. read(): This method is used to read the next character of data from the
+        // input stream.
+        // 2. close(): This method is used to close the input stream.
+
+        // Java FileWriter Class
+        // The FileWriter class is used to write data to a file as a stream of characters.
+        // It is used for writing character files, such as text files.
+        // The FileWriter class is present in the java.io package.
+        // It extends the OutputStreamWriter class.
+
+        // Java FileWriter Class Constructors
+        // 1. FileWriter(String fileName): Creates a new FileWriter by opening a
+        // connection to the file specified by the fileName parameter.
+        // 2. FileWriter(File file): Creates a new FileWriter by opening a connection to
+        // the file specified by the file parameter.
+
+        // Java FileWriter Class Methods
+        // 1. write(String str): This method is used to write a string to the output
+        // stream.
+        // 2. close(): This method is used to close the output stream.
+
+        // Java BufferedInputStream Class
+        // The BufferedInputStream class is used to read data from a file as a stream of
+        // bytes with buffering.
+        // It is used for reading raw bytes of data, such as image data, audio data, etc.
+
+        // Java BufferedInputStream Class Constructors
+        // 1. BufferedInputStream(InputStream in): Creates a new BufferedInputStream by
+        // wrapping the specified input stream.
+        // 2. BufferedInputStream(InputStream in, int size): Creates a new
+        // BufferedInputStream by wrapping the specified input stream and setting the
+        // buffer size.
+
+        // Java BufferedInputStream Class Methods
+        // 1. read(): This method is used to read the next byte of data from the input
+        // stream.
+        // 2. close(): This method is used to close the input stream.
+
+        // Java BufferedOutputStream Class
+        // The BufferedOutputStream class is used to write data to a file as a stream of
+        // bytes with buffering.
+        // It is used for writing raw bytes of data, such as image data, audio data, etc.
+
+        // Java BufferedOutputStream Class Constructors
+        // 1. BufferedOutputStream(OutputStream out): Creates a new BufferedOutputStream
+        // by wrapping the specified output stream.
+        // 2. BufferedOutputStream(OutputStream out, int size): Creates a new
+        // BufferedOutputStream by wrapping the specified output stream and setting the
+        // buffer size.
+
+        // Java BufferedOutputStream Class Methods
+        // 1. write(int b): This method is used to write the specified byte to the output
+        // stream.
+        // 2. close(): This method is used to close the output stream.
+
+        // Java DataInputStream Class
+        // The DataInputStream class is used to read primitive data types from an input
+        // stream.
+        // It is used for reading primitive data types, such as int, float, double, etc.
+
+        // Java DataInputStream Class Constructors
+        // 1. DataInputStream(InputStream in): Creates a new DataInputStream by wrapping
+        // the specified input stream.
+
+        // Java DataInputStream Class Methods
+        // 1. readInt(): This method is used to read an integer from the input stream.
+        // 2. readFloat(): This method is used to read a float from the input stream.
+        // 3. readDouble(): This method is used to read a double from the input stream.
+        // 4. close(): This method is used to close the input stream.
+
+        // Java DataOutputStream Class
+        // The DataOutputStream class is used to write primitive data types to an output
+        // stream.
+        // It is used for writing primitive data types, such as int, float, double, etc.
+
+        // Java DataOutputStream Class Constructors
+        // 1. DataOutputStream(OutputStream out): Creates a new DataOutputStream by
+        // wrapping the specified output stream.
+
+        // Java DataOutputStream Class Methods
+        // 1. writeInt(int i): This method is used to write an integer to the output
+        // stream.
+        // 2. writeFloat(float f): This method is used to write a float to the output
+        // stream.
+        // 3. writeDouble(double d): This method is used to write a double to the output
+        // stream.
+        // 4. close(): This method is used to close the output stream.
+
+        // Java RandomAccessFile Class
+        // The RandomAccessFile class is used to read and write data to a file randomly.
+        // It is used for reading and writing data at any position in the file.
+        // The RandomAccessFile class is present in the java.io package.
+
+        // Java RandomAccessFile Class Constructors
+        // 1. RandomAccessFile(String name, String mode): Creates a new RandomAccessFile
+        // by opening a connection to the file specified by the name parameter in the
+        // mode specified by the mode parameter.
+        // 2. RandomAccessFile(File file, String mode): Creates a new RandomAccessFile by
+        // opening a connection to the file specified by the file parameter in the mode
+        // specified by the mode parameter.
+
+        // Java RandomAccessFile Class Methods
+        // 1. read(): This method is used to read the next byte of data from the input
+        // stream.
+        // 2. write(int b): This method is used to write the specified byte to the output
+        // stream.
+        // 3. seek(long pos): This method is used to set the file-pointer offset.
+        // 4. close(): This method is used to close the input and output streams.
+
+        // Java Scanner Class
+        // The Scanner class is used to read data from various input sources like files,
+        // strings, and streams.
+        // It is used for reading input data in a formatted way.
+        // The Scanner class is present in the java.util package.
+
+        // Java Scanner Class Constructors
+        // 1. Scanner(File source): Creates a new Scanner by parsing the specified file.
+        // 2. Scanner(String source): Creates a new Scanner by parsing the specified
+        // string.
+        // 3. Scanner(InputStream source): Creates a new Scanner by parsing the specified
+        // input stream.
+
+        // Java Scanner Class Methods
+        // 1. next(): This method is used to read the next token from the input source.
+        // 2. nextInt(): This method is used to read the next integer from the input
+        // source.
+        // 3. nextDouble(): This method is used to read the next double from the input
+        // source.
+        // 4. close(): This method is used to close the input source.
+
+        // Java PrintWriter Class
+        // The PrintWriter class is used to write formatted data to a file.
+        // It is used for writing formatted data, such as text data, to a file.
+        // The PrintWriter class is present in the java.io package.
+
+        // Java PrintWriter Class Constructors
+        // 1. PrintWriter(String fileName): Creates a new PrintWriter by opening a
+        // connection to the file specified by the fileName parameter.
+        // 2. PrintWriter(File file): Creates a new PrintWriter by opening a connection to
+        // the file specified by the file parameter.
+
+        // Java PrintWriter Class Methods
+        // 1. print(String s): This method is used to write a string to the output stream.
+        // 2. println(String s): This method is used to write a string followed by a
+        // newline character to the output stream.
+        // 3. close(): This method is used to close the output stream.
 
         // Java File Example
         // Let's create a new file using the File class.
@@ -418,10 +693,5 @@ public class FileHandling {
         // The above code writes the text "Hello, World!" to the file "test.txt".
         // It uses the FileWriter class to write to the file.
         // It then writes the text to the file and prints "Successfully wrote to the file." if successful.
-
-        // Java File Handling
-        // File Handling in Java is a powerful feature that allows you to perform various operations on files and directories.
-        // You can create, read, write, delete, and manipulate files using the File class and other file handling classes in Java.
-        // File Handling is essential for working with files and directories in Java applications.
     }
 }
