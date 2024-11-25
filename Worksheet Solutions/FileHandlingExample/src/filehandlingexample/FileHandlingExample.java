@@ -11,7 +11,7 @@ public class FileHandlingExample {
         try (FileReader reader = new FileReader(filePath)) {
             int ch;
             while ((ch = reader.read()) != -1) {
-            content.append((char) ch);
+                content.append((char) ch);
             }
         } catch (Exception e) {
             System.out.println("Error reading file: " + e.getMessage());
@@ -19,7 +19,7 @@ public class FileHandlingExample {
         return content.toString();
     }
 
-    public static ArrayList<String> getFileList(String directory){
+    public static ArrayList<String> getFileList(String directory) {
         ArrayList<String> files = new ArrayList<>();
         try {
             File folder = new File(directory);
@@ -52,6 +52,7 @@ public class FileHandlingExample {
             System.out.println("Error writing to file: " + e.getMessage());
         }
     }
+
     public static void main(String[] args) {
         /*
          * Create the following methods (use try-catch when needed):
@@ -124,27 +125,26 @@ public class FileHandlingExample {
          * Mary Major has been used in some American federal cases.
          */
 
-        //File path to example.txt
+        // File path to example.txt
         String filePath = "example.txt";
-        //File Content as String
+        // File Content as String
         String content = readTextFile(filePath);
 
         int count = 0;
-        //target represents what should be counted
+        // target represents what should be counted
         String target = "Doe";
 
         // .split("\\s+") splits the content by whitespace
         // whitespace includes spaces, tabs, and newlines
-        for (String word : content.split("\\s+")) {
+        for (String word : content.split("[\\s,./ \"]+")) {
             if (word.contains(target)) {
-            count++;
+                count++;
             }
         }
-
-        //Path to result.txt
+        // Path to result.txt
         String resultFilePath = "result.txt";
-        
-        //File content to write
+
+        // File content to write
         writeToTextFile(resultFilePath, "Count of 'Doe': " + count);
     }
 }
