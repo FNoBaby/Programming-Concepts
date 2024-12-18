@@ -10,6 +10,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JOptionPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -22,6 +25,44 @@ public class NotepadWannabe extends javax.swing.JFrame {
      */
     public NotepadWannabe() {
         initComponents();
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (isDirty) {
+                    Object[] options = {"Save", "Discard", "Cancel"};
+                    int option = JOptionPane.showOptionDialog(
+                            NotepadWannabe.this,
+                            "You have unsaved changes. Do you want to save them?",
+                            "Unsaved Changes",
+                            JOptionPane.YES_NO_CANCEL_OPTION,
+                            JOptionPane.WARNING_MESSAGE,
+                            null,
+                            options,
+                            options[0]
+                    );
+                    if (option == JOptionPane.YES_OPTION) {
+                        String filePath = showSaveDialogAndGetPath();
+                        setTitle(filePath);
+                        if (filePath != null) {
+                            writeToTextFile(filePath, MainTextArea.getText());
+                            currentFilePath = filePath;
+                            originalContent = MainTextArea.getText();
+                            setTitle(getTitle().replace(" *", ""));
+                            isDirty = true;
+                            SaveMenuItem.setEnabled(true);
+                        }
+                        if (!isDirty) {
+                            System.exit(0);
+                        }
+                    } else if (option == JOptionPane.NO_OPTION) {
+                        System.exit(0);
+                    }
+                    // Do nothing if Cancel is selected
+                } else {
+                    System.exit(0);
+                }
+            }
+        });
     }
 
     public static String readTextFile(String filePath) {
@@ -100,6 +141,8 @@ public class NotepadWannabe extends javax.swing.JFrame {
     }
 
     private String currentFilePath = null;
+    private boolean isDirty = false;
+    private String originalContent = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,6 +156,7 @@ public class NotepadWannabe extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         MainTextArea = new javax.swing.JTextArea();
+        wordCountLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         OpenMenuItem = new javax.swing.JMenuItem();
@@ -120,12 +164,21 @@ public class NotepadWannabe extends javax.swing.JFrame {
         SaveMenuItem = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         ExitMenuItem = new javax.swing.JMenuItem();
+        helpButton = new javax.swing.JMenu();
+        aboutButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         MainTextArea.setColumns(20);
         MainTextArea.setRows(5);
+        MainTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                MainTextAreaKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(MainTextArea);
+
+        wordCountLabel.setText("0 words");
 
         jMenu1.setText("File");
 
@@ -165,6 +218,18 @@ public class NotepadWannabe extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        helpButton.setText("Help");
+
+        aboutButton.setText("About");
+        aboutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutButtonActionPerformed(evt);
+            }
+        });
+        helpButton.add(aboutButton);
+
+        jMenuBar1.add(helpButton);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,14 +238,19 @@ public class NotepadWannabe extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(wordCountLabel)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                .addComponent(wordCountLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -190,33 +260,82 @@ public class NotepadWannabe extends javax.swing.JFrame {
     private void OpenMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenMenuItemActionPerformed
         currentFilePath = showOpenDialogAndGetPath();
         if (currentFilePath != null) {
-            String content = readTextFile(currentFilePath);
-            MainTextArea.setText(content);
+            setTitle(currentFilePath);
+            originalContent = readTextFile(currentFilePath);
+            MainTextArea.setText(originalContent);
             SaveMenuItem.setEnabled(true);
+            updateWordCount();
+            isDirty = false;
+            setTitle(getTitle().replace(" *", ""));
+        } else {
+            return;
         }
     }//GEN-LAST:event_OpenMenuItemActionPerformed
 
     private void SaveAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsMenuItemActionPerformed
         String filePath = showSaveDialogAndGetPath();
         if (filePath != null) {
+            setTitle(filePath);
             writeToTextFile(filePath, MainTextArea.getText());
             currentFilePath = filePath;
+            originalContent = MainTextArea.getText();
+            setTitle(getTitle().replace(" *", ""));
+            isDirty = false;
             SaveMenuItem.setEnabled(true);
+        } else {
+            return;
         }
     }//GEN-LAST:event_SaveAsMenuItemActionPerformed
 
     private void SaveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveMenuItemActionPerformed
         if (currentFilePath != null) {
             writeToTextFile(currentFilePath, MainTextArea.getText());
+            originalContent = MainTextArea.getText();
+            setTitle(getTitle().replace(" *", ""));
+            isDirty = false;
         } else {
-            SaveAsMenuItemActionPerformed(evt);
+            String filePath = showSaveDialogAndGetPath();
+            if (filePath != null) {
+                writeToTextFile(filePath, MainTextArea.getText());
+                currentFilePath = filePath;
+                originalContent = MainTextArea.getText();
+                setTitle(getTitle().replace(" *", ""));
+                isDirty = false;
+                SaveMenuItem.setEnabled(true);
+            }
         }
-    }//GEN-LAST:event_SaveMenuItemActionPerformed
+}//GEN-LAST:event_SaveMenuItemActionPerformed
 
     private void ExitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitMenuItemActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_ExitMenuItemActionPerformed
+
+    private void aboutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Notepad V1 \n Notepad Java Project");
+    }//GEN-LAST:event_aboutButtonActionPerformed
+
+    private void MainTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MainTextAreaKeyTyped
+        if (!MainTextArea.getText().equals(originalContent)) {
+            if (!isDirty) {
+                setTitle(getTitle() + " *");
+                isDirty = true;
+            }
+        } else {
+            if (isDirty) {
+                setTitle(getTitle().replace(" *", ""));
+                isDirty = false;
+            }
+        }
+        updateWordCount();
+    }//GEN-LAST:event_MainTextAreaKeyTyped
+
+    private void updateWordCount() {
+        String text = MainTextArea.getText().trim();
+        int wordCount = text.isEmpty() ? 0 : text.split("\\s+").length;
+        wordCountLabel.setText(wordCount + " words");
+    }
 
     /**
      * @param args the command line arguments
@@ -267,9 +386,12 @@ public class NotepadWannabe extends javax.swing.JFrame {
     private javax.swing.JMenuItem OpenMenuItem;
     private javax.swing.JMenuItem SaveAsMenuItem;
     private javax.swing.JMenuItem SaveMenuItem;
+    private javax.swing.JMenuItem aboutButton;
+    private javax.swing.JMenu helpButton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JLabel wordCountLabel;
     // End of variables declaration//GEN-END:variables
 }
